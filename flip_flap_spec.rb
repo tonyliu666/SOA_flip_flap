@@ -19,7 +19,7 @@ describe 'FlipFlap specs' do
     _(FlipFlap.input_formats).must_include 'yaml'
   end
 
-  it 'should convert yml to tsv' do
+  it 'should convert yml to tsv' do # fail
     flipper = FlipFlap.new
     flipper.take_yaml(YML_DATA)
     _(flipper.to_tsv).must_equal TSV_DATA
@@ -31,7 +31,7 @@ describe 'FlipFlap specs' do
     _(flipper.to_yaml).must_equal YML_DATA
   end
 
-  it 'should store Yaml in data we can retrieve' do
+  it 'should store Yaml in data we can retrieve' do # fail
     flipper = FlipFlap.new
     _(flipper.data).must_be_nil
     flipper.take_yaml(YML_DATA)
@@ -47,7 +47,7 @@ describe 'FlipFlap specs' do
 end
 
 describe 'application specs' do
-  it 'should convert yml to tsv from command line' do
+  it 'should convert yml to tsv from command line' do # fail
     `ruby yml_to_tsv.rb data/survey.yml data/test.tsv`
     _(File.file?('data/test.tsv')).must_equal true
     diff = FileUtils.compare_file('data/survey.tsv', 'data/test.tsv')
